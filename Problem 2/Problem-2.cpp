@@ -9,8 +9,8 @@
 #include <cmath>
 #include <iomanip>
 #include <climits>
+
 using namespace std;
-#define nl "\n"
 #define ll long long
 #define infinity INT_MAX
 
@@ -24,9 +24,6 @@ struct Node
     Node(pair<double, double> lon_lat)
     {
         this->lon_lat = lon_lat;
-    }
-    Node()
-    {
     }
 };
 
@@ -113,7 +110,7 @@ void writeKML(
     ofstream kml(filename);
     if (!kml.is_open())
     {
-        cout << "Could not write KML file" << nl;
+        cout << "Could not write KML file" << endl;
         return;
     }
 
@@ -170,7 +167,7 @@ void buildGraph_from_dataset(string fileName, vector<Node> &nodes, map<pair<doub
 
     if (!(mapFile.is_open()))
     {
-        cout << "Cant open the dataset of map - " << fileName << nl;
+        cout << "Cant open the dataset of map - " << fileName << endl;
         return;
     }
 
@@ -236,16 +233,16 @@ int main()
     cin >> src_lonLat.first;
     cout << "Source Latitude = ";
     cin >> src_lonLat.second;
-    cout << nl;
+    cout << endl;
 
     cout << "Destination Longitude = ";
     cin >> dst_lonLat.first;
     cout << "Destination Latitude = ";
     cin >> dst_lonLat.second;
-    cout << nl;
+    cout << endl;
 
-    cout << src_lonLat.first << ' ' << src_lonLat.second << nl;
-    cout << dst_lonLat.first << ' ' << dst_lonLat.second << nl;
+    cout << src_lonLat.first << ' ' << src_lonLat.second << endl;
+    cout << dst_lonLat.first << ' ' << dst_lonLat.second << endl;
 
     int srcID, dstID;
 
@@ -313,13 +310,13 @@ int main()
 
     if (nodes[dstID].distance == infinity)
     {
-        cout << "NO path" << nl;
-        cout << nl;
+        cout << "NO path" << endl;
+        cout << endl;
         return 0;
     }
 
-    cout << fixed << setprecision(6) << nl;
-    cout << "Cheapest Cost = " << nodes[dstID].distance << "(Tk)" << nl;
+    cout << fixed << setprecision(6) << endl;
+    cout << "Cheapest Cost = " << nodes[dstID].distance << "(Tk)" << endl;
     vector<int> path;
 
     path.push_back(dstID);
@@ -362,11 +359,11 @@ int main()
 
         cout << dist * costPerKM << " TK )";
 
-        cout << nl;
+        cout << endl;
     }
 
     writeKML("Problem-2.kml", path, nodes);
-    cout << "KML written to Problem-2.kml" << nl;
+    cout << "KML written to Problem-2.kml" << endl;
 
     return 0;
 }

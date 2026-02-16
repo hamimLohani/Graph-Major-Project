@@ -9,8 +9,8 @@
 #include <cmath>
 #include <iomanip>
 #include <climits>
+
 using namespace std;
-#define nl "\n"
 #define ll long long
 #define infinity INT_MAX
 
@@ -24,9 +24,6 @@ struct Node
     Node(pair<double, double> lon_lat)
     {
         this->lon_lat = lon_lat;
-    }
-    Node()
-    {
     }
 };
 
@@ -113,7 +110,7 @@ void writeKML(
     ofstream kml(filename);
     if (!kml.is_open())
     {
-        cout << "Could not write KML file" << nl;
+        cout << "Could not write KML file" << endl;
         return;
     }
 
@@ -162,7 +159,7 @@ int main()
 
     if (!(roadmap.is_open()))
     {
-        cout << "Cant open the dataset of roadmap" << nl;
+        cout << "Cant open the dataset of roadmap" << endl;
         return 0;
     }
 
@@ -208,10 +205,10 @@ int main()
     cin >> dst_lonLat.first;
     cin >> dst_lonLat.second;
 
-    cout << "Source Longitude = " << src_lonLat.first << nl;
-    cout << "Source Latitude = " << src_lonLat.second << nl;
-    cout << "Destination Longitude = " << dst_lonLat.first << nl;
-    cout << "Destination Latitude = " << dst_lonLat.second << nl;
+    cout << "Source Longitude = " << src_lonLat.first << endl;
+    cout << "Source Latitude = " << src_lonLat.second << endl;
+    cout << "Destination Longitude = " << dst_lonLat.first << endl;
+    cout << "Destination Latitude = " << dst_lonLat.second << endl;
 
     int srcID, dstID;
 
@@ -279,12 +276,12 @@ int main()
 
     if (nodes[dstID].distance == infinity)
     {
-        cout << "NO path" << nl;
-        cout << nl;
+        cout << "NO path" << endl;
+        cout << endl;
         return 0;
     }
 
-    cout << "Shortest Distance = " << nodes[dstID].distance << "(km)" << nl;
+    cout << "Shortest Distance = " << nodes[dstID].distance << "(km)" << endl;
     vector<int> path;
 
     path.push_back(dstID);
@@ -315,11 +312,11 @@ int main()
         double dist = haversine(nodes[path[i]].lon_lat, nodes[path[i + 1]].lon_lat);
         cout << dist << " km )";
 
-        cout << nl;
+        cout << endl;
     }
 
     writeKML("Problem-1.kml", path, nodes);
-    cout << "KML written to Problem-1.kml" << nl;
+    cout << "KML written to Problem-1.kml" << endl;
 
     return 0;
 }
