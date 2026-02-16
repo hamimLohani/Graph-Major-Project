@@ -51,8 +51,10 @@ void dijkstra(int src, vector<Node> &nodes)
 
         st.erase(v_it);
 
-        for (auto &[u, vu_w] : nodes[v].adj)
+        for (auto &edge : nodes[v].adj)
         {
+            int u = edge.first;
+            double vu_w = edge.second;
             auto it = st.find({nodes[u].distance, u});
             if (it != st.end() && nodes[u].distance > nodes[v].distance + vu_w)
             {
